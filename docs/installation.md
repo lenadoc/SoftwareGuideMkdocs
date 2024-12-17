@@ -1,18 +1,31 @@
-# Installation
-## Requirements
-- Windows 11
-- Python 3.8 or higher
+# Installation Guide
 
-## Steps
-1. Download the installer.
-2. Run the installer and follow the instructions.
-3. Verify the installation by typing `software --version` in the command line.
+## System Requirements
 
-| Requirement      | Minimum Version |
-|------------------|-----------------|
-| Python           | 3.8            |
-| Operating System | Windows 11     |
+- Python 3.8+
+- Docker 20.10+
+- 4GB RAM minimum
 
-## Additional Resources
-- [Official Website](https://example.com)
-- [GitHub Repository](https://github.com/example)
+## Installation Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-org/your-repo.git
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+!!! warning "Docker Required"
+    Make sure Docker is running before proceeding with the installation.
+
+??? question "Common Installation Issues"
+    - Port 8080 already in use
+    - Docker daemon not running
+    - Insufficient permissions
+
+Ready to start? Head to [Create a Project](usage/create-project.md)!
+
+---

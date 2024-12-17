@@ -2,19 +2,53 @@ site_name: Software Guide - Mkdocs
 theme:
   name: material
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - search.highlight
+    - navigation.sections  # Enables sections for nested navigation
+    - navigation.expand   # Expands navigation by default
+    - toc.follow
+  
+nav:
+  - Home: index.md
+  - SoftwareProject overview: overview.md
+  - Installation: installation.md
+  - How to use the software:
+      - Introduction: usage/index.md
+      - Create a Project: usage/create-project.md
+      - Create a Process: usage/create-process.md
+      - Test the Project: usage/test-project.md
 plugins:
   - search
 markdown_extensions:
   - tables
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 extra:
   version:
     provider: mike
     default: latest
     permalink: true
+    analytics: 
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
