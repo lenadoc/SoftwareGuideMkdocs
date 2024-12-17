@@ -1,0 +1,6 @@
+# Ignore mike temporary files
+mike-*.yaml
+
+# Other ignored files or directories
+site/
+*.log
