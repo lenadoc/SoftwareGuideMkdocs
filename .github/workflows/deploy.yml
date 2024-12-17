@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-ubuntu-22.04
 
     steps:
     - name: Checkout code
@@ -18,10 +18,12 @@ jobs:
       with:
         python-version: 3.x  # Specify the Python version you need
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-        pip install mike
+        pip install --upgrade pip
+        pip install mkdocs mike
 
     - name: Deploy documentation
       run: |
