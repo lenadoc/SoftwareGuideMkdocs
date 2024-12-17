@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to match your default branch where PRs are merged
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11  # Specify the Python version you need (specific version recommended)
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install mike  # Ensure mike is included in your requirements.txt if possible
+
+    - name: Deploy documentation
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for authentication (optional)
+      run: |
+        mike deploy 4.16 latest --branch gh-pages --push
+        mike set-default 4.16 --branch gh-pages --push  # Optional, use if you want to reset the default version
+
+
