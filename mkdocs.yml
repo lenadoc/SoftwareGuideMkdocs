@@ -1,38 +1,32 @@
 site_name: Software Guide - Mkdocs
+
+repo_url: https://github.com/lenadoc/SoftwareGuideMkdocs
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   features:
     - navigation.sections  # Enables sections for nested navigation
-    - navigation.expand   # Expands navigation by default
+    - navigation.expand    # Allows parent items to act as collapsible dropdowns
     - toc.follow
-    - toc.integrate
+    - content.action.edit  # Add this line to enable page-specific edit buttons
   
-  # Add the 'edit' feature
   palette:
     primary: indigo
     accent: indigo
-  
-  # Configure the 'edit' button
-  extra:
-    social:
-      - icon: fontawesome/brands/github
-        link: https://github.com/your-org/your-repo
-    repo_url: https://github.com/your-org/your-repo
-    repo_name: your-org/your-repo
-    repo_icon: fontawesome/brands/github
   
 nav:
   - Home: index.md
   - Software Project Overview: overview.md
   - Installation: installation.md
-  - How to Use the Software:
+  - "How to Use the Software":
       - Introduction: usage/index.md
       - Create a Project: usage/create-project.md
       - Create a Process: usage/create-process.md
-      - Test the Project: usage/test-project.md
-
+      - Test a Project: usage/test-project.md
 plugins:
   - search
+
 markdown_extensions:
   - tables
   - admonition
@@ -53,4 +47,23 @@ extra:
     provider: mike
     default: latest
     permalink: true
-   
+  hide:
+    - navigation.repo  # Hides the repository link in the top left corner
+  analytics: 
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lenadoc/SoftwareGuideMkdocs
+  feedback:
+    title: Was this page helpful?
+    ratings:
+      - icon: material/emoticon-happy-outline
+        name: This page was helpful
+        data: 1
+        note: >-
+          Thanks for your feedback!
+      - icon: material/emoticon-sad-outline
+        name: This page could be improved
+        data: 0
+        note: >- 
+          Thanks for your feedback! Help us improve this page by
+          using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
