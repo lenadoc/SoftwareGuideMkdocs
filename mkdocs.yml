@@ -17,7 +17,7 @@ theme:
   
 nav:
   - Home: index.md
-  - SoftwareProject overview: overview.md
+  - Software Project Overview: overview.md
   - Installation: installation.md
   - "How to Use the Software":
       - Introduction: usage/index.md
