@@ -17,4 +17,4 @@ Follow these steps to create your first project:
 See [Create a Process](create-process.md) for next steps.
 
 
-![Sample Image](images/this-is-fine.jpg)
+![Sample Image](../images/this-is-fine.jpg)
