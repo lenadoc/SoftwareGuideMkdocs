@@ -5,16 +5,32 @@ theme:
     - navigation.sections  # Enables sections for nested navigation
     - navigation.expand   # Expands navigation by default
     - toc.follow
+    - toc.integrate
+  
+  # Add the 'edit' feature
+  palette:
+    primary: indigo
+    accent: indigo
+  
+  # Configure the 'edit' button
+  extra:
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/your-org/your-repo
+    repo_url: https://github.com/your-org/your-repo
+    repo_name: your-org/your-repo
+    repo_icon: fontawesome/brands/github
   
 nav:
   - Home: index.md
-  - SoftwareProject overview: overview.md
+  - Software Project Overview: overview.md
   - Installation: installation.md
-  - How to use the software:
+  - How to Use the Software:
       - Introduction: usage/index.md
       - Create a Project: usage/create-project.md
       - Create a Process: usage/create-process.md
       - Test the Project: usage/test-project.md
+
 plugins:
   - search
 markdown_extensions:
@@ -37,18 +53,4 @@ extra:
     provider: mike
     default: latest
     permalink: true
-    analytics: 
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: 0
-          note: >- 
-            Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+   
