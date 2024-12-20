@@ -14,6 +14,6 @@ Follow these steps to create your first project:
 !!! tip "Project Templates"
     Use our pre-built templates to get started quickly. Access them from the "Templates" dropdown.
 
-See [Create a Process](create-process.md) for next steps.
+See [Create a Process](create-processs.md) for next steps.
 
 ![Sample Image](../images/this-is-fine.jpg)
