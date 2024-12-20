@@ -1,0 +1,46 @@
+name: Check for 404 Links
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material
+          pip install mkdocs
+          
+      - name: Build MkDocs site
+        run: mkdocs build
+        
+      - name: Install link checker
+        run: npm install -g broken-link-checker
+        
+      - name: Start Python HTTP server
+        run: |
+          python -m http.server 8000 --directory site &
+          sleep 5
+          
+      - name: Check for broken links
+        run: |
+          echo "Checking for broken links..."
+          # Run the link checker and filter for BROKEN links only
+          if blc http://localhost:8000 -ro --exclude external | grep "BROKEN"; then
+            echo "::error::Broken links were found above"
+            exit 1
+          else
+           echo "✅ No broken links found!"
+          fi
