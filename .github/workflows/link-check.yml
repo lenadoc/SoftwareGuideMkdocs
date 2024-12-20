@@ -22,7 +22,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs-material
           pip install mkdocs
-          # Install any other required MkDocs plugins here
           
       - name: Build MkDocs site
         run: mkdocs build
@@ -33,15 +32,42 @@ jobs:
       - name: Start Python HTTP server
         run: |
           python -m http.server 8000 --directory site &
-          sleep 5 # Give the server time to start
+          sleep 5
           
       - name: Check for broken links
         run: |
-          blc http://localhost:8000 -ro --exclude external --filter-level 3 > link_check.txt
+          # Create a temporary file for detailed results
+          echo "Checking for broken links in documentation..." > link_check_details.txt
+          echo "----------------------------------------" >> link_check_details.txt
+          
+          # Run link checker with more verbose output
+          blc http://localhost:8000 -ro --exclude external --filter-level 3 --verbose > link_check.txt
+          
           if grep -q "BROKEN" link_check.txt; then
-            echo "::error::Found broken links in documentation"
-            cat link_check.txt
+            echo "::group::Broken Links Found"
+            echo "The following broken links were found in your documentation:"
+            echo ""
+            
+            # Process the output to show only relevant broken link information
+            grep -B 1 "BROKEN" link_check.txt | while read -r line; do
+              if [[ $line == *"Getting links from"* ]]; then
+                # Extract the page URL
+                PAGE_URL=$(echo "$line" | sed 's/Getting links from //')
+                echo "Page: $PAGE_URL"
+              elif [[ $line == *"BROKEN"* ]]; then
+                # Extract and format the broken link
+                BROKEN_LINK=$(echo "$line" | awk '{print $2}')
+                echo "├─ ❌ Broken link: $BROKEN_LINK"
+                echo ""
+              fi
+            done | tee -a link_check_details.txt
+            
+            echo "::endgroup::"
+            echo "::error::Found broken links in documentation. Check the detailed report in the job artifacts."
             exit 1
+          else
+            echo "✅ No broken links found!"
+            echo "All documentation links are valid." >> link_check_details.txt
           fi
         
       - name: Upload link check results
@@ -49,4 +75,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: link-check-results
-          path: link_check.txt
+          path: |
+            link_check.txt
+            link_check_details.txt
