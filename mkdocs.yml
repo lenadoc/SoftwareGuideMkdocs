@@ -7,13 +7,34 @@ theme:
   name: material
   features:
     - navigation.sections  # Enables sections for nested navigation
-    - navigation.expand    # Allows parent items to act as collapsible dropdowns
     - toc.follow
     - content.action.edit  # Add this line to enable page-specific edit buttons
+    - content.feedback
+    - navigation.footer
+    - navigation.indexes
   
   palette:
     primary: indigo
     accent: indigo
+
+  extra:
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/lenadoc/SoftwareGuideMkdocs
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
   
 nav:
   - Home: index.md
@@ -40,30 +61,5 @@ markdown_extensions:
       custom_checkbox: true
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-extra:
-  version:
-    provider: mike
-    default: latest
-    permalink: true
-  hide:
-    - navigation.repo  # Hides the repository link in the top left corner
-  analytics: 
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/lenadoc/SoftwareGuideMkdocs
-  feedback:
-    title: Was this page helpful?
-    ratings:
-      - icon: material/emoticon-happy-outline
-        name: This page was helpful
-        data: 1
-        note: >-
-          Thanks for your feedback!
-      - icon: material/emoticon-sad-outline
-        name: This page could be improved
-        data: 0
-        note: >- 
-          Thanks for your feedback! Help us improve this page by
-          using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
