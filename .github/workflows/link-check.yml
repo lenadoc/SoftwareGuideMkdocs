@@ -37,11 +37,12 @@ jobs:
       - name: Check for broken links
         run: |
           echo "Checking for broken links..."
-          output=$(blc http://localhost:8000 -ro --exclude external)
+          # Run blc and capture its output while also displaying it
+          output=$(blc http://localhost:8000 -ro --exclude external | tee /dev/tty)
           
           if echo "$output" | grep -q "BROKEN"; then
-            echo "::error::Found broken links in documentation:"
-            echo "$output" | grep -B 1 "BROKEN"
+            echo "::error::The following broken links were found:"
+            echo "$output" | awk '/Getting links from:/{p=$0;next} /BROKEN/{print p; print}' | grep -v "^$"
             exit 1
           else
             echo "✅ No broken links found!"
