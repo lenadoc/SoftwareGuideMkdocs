@@ -36,13 +36,26 @@ jobs:
           
       - name: Check for broken links
         run: |
-          # Run link checker and save full output
-          blc http://localhost:8000 -ro --exclude external --verbose || true
+          # Run link checker and save output
           blc http://localhost:8000 -ro --exclude external > link_check.txt
           
           if grep -q "BROKEN" link_check.txt; then
-            echo "::error::Found broken links in documentation. See output above for details."
+            echo "::error::Found broken links in documentation:"
+            echo ""
+            # Get the current page being checked
+            current_page=""
+            while IFS= read -r line; do
+              if [[ $line == "Getting links from:"* ]]; then
+                current_page=$line
+              elif [[ $line == *"BROKEN"* ]]; then
+                echo "$current_page"
+                echo "$line"
+                echo "---"
+              fi
+            done < link_check.txt
             exit 1
+          else
+            echo "✅ No broken links found!"
           fi
         
       - name: Upload link check results
