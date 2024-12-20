@@ -36,31 +36,13 @@ jobs:
           
       - name: Check for broken links
         run: |
-          # Run link checker and save output
-          blc http://localhost:8000 -ro --exclude external > link_check.txt
+          echo "Checking for broken links..."
+          output=$(blc http://localhost:8000 -ro --exclude external)
           
-          if grep -q "BROKEN" link_check.txt; then
+          if echo "$output" | grep -q "BROKEN"; then
             echo "::error::Found broken links in documentation:"
-            echo ""
-            # Get the current page being checked
-            current_page=""
-            while IFS= read -r line; do
-              if [[ $line == "Getting links from:"* ]]; then
-                current_page=$line
-              elif [[ $line == *"BROKEN"* ]]; then
-                echo "$current_page"
-                echo "$line"
-                echo "---"
-              fi
-            done < link_check.txt
+            echo "$output" | grep -B 1 "BROKEN"
             exit 1
           else
             echo "✅ No broken links found!"
           fi
-        
-      - name: Upload link check results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: link-check-results
-          path: link_check.txt
