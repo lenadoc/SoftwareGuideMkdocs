@@ -35,15 +35,12 @@ jobs:
           sleep 5
           
       - name: Check for broken links
-        run: |
-          echo "Checking for broken links..."
-          # Run the link checker and filter for BROKEN links only
-          blc http://localhost:8000 -ro --exclude external | grep "BROKEN" || true
-          
-          # Check the exit status of grep to determine if broken links were found
-          if [ $? -ne 0 ]; then
-            echo "✅ No broken links found!"
-          else
-            echo "::error::Broken links were found above"
-            exit 1
-          fi
+    run: |
+      echo "Checking for broken links..."
+      # Run the link checker and filter for BROKEN links only
+      if blc http://localhost:8000 -ro --exclude external | grep "BROKEN"; then
+        echo "::error::Broken links were found above"
+        exit 1
+      else
+        echo "✅ No broken links found!"
+      fi
