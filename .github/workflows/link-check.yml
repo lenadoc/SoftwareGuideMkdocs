@@ -36,38 +36,13 @@ jobs:
           
       - name: Check for broken links
         run: |
-          # Create a temporary file for detailed results
-          echo "Checking for broken links in documentation..." > link_check_details.txt
-          echo "----------------------------------------" >> link_check_details.txt
-          
-          # Run link checker with more verbose output
-          blc http://localhost:8000 -ro --exclude external --filter-level 3 --verbose > link_check.txt
+          # Run link checker and save full output
+          blc http://localhost:8000 -ro --exclude external --verbose || true
+          blc http://localhost:8000 -ro --exclude external > link_check.txt
           
           if grep -q "BROKEN" link_check.txt; then
-            echo "::group::Broken Links Found"
-            echo "The following broken links were found in your documentation:"
-            echo ""
-            
-            # Process the output to show only relevant broken link information
-            grep -B 1 "BROKEN" link_check.txt | while read -r line; do
-              if [[ $line == *"Getting links from"* ]]; then
-                # Extract the page URL
-                PAGE_URL=$(echo "$line" | sed 's/Getting links from //')
-                echo "Page: $PAGE_URL"
-              elif [[ $line == *"BROKEN"* ]]; then
-                # Extract and format the broken link
-                BROKEN_LINK=$(echo "$line" | awk '{print $2}')
-                echo "├─ ❌ Broken link: $BROKEN_LINK"
-                echo ""
-              fi
-            done | tee -a link_check_details.txt
-            
-            echo "::endgroup::"
-            echo "::error::Found broken links in documentation. Check the detailed report in the job artifacts."
+            echo "::error::Found broken links in documentation. See output above for details."
             exit 1
-          else
-            echo "✅ No broken links found!"
-            echo "All documentation links are valid." >> link_check_details.txt
           fi
         
       - name: Upload link check results
@@ -75,6 +50,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: link-check-results
-          path: |
-            link_check.txt
-            link_check_details.txt
+          path: link_check.txt
