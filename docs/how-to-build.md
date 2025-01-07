@@ -18,3 +18,5 @@ pandoc docs/usage/create-project.md -o create3.pdf --pdf-engine=xelatex
 pandoc docs/usage/create-project.md -o create3.pdf --pdf-engine=xelatex --extract-media=
 
 pandoc docs/usage/create-project.md -o create4.pdf --extract-media=
+
+Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
