@@ -19,4 +19,12 @@ pandoc docs/usage/create-project.md -o create3.pdf --pdf-engine=xelatex --extrac
 
 pandoc docs/usage/create-project.md -o create4.pdf --extract-media=
 
-Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
+Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin. Installation:
+
+1. Install WeasyPrint:
+    1. Install the latest executable from this page: https://github.com/Kozea/WeasyPrint/releases
+    2. Install MSYS2:
+        1. Install [MSYS2](https://www.msys2.org/#installation) keeping the default options.
+        2. After installation, in MSYS2’s shell, execute `pacman -S mingw-w64-x86_64-pango`.
+        3. Close MSYS2’s shell.
+    3. Follow the installation procedure described [here](https://github.com/zhaoterryy/mkdocs-pdf-export-plugin?tab=readme-ov-file#installation).

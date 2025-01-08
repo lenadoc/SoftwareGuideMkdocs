@@ -47,6 +47,8 @@ nav:
       - Test a Project: usage/test-project.md
 plugins:
   - search
+  - pdf-export:
+      combined: true
 
 markdown_extensions:
   - tables
