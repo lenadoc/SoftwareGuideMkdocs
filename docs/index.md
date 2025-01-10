@@ -16,8 +16,8 @@ Description of feature 2.
 
 | Feature | Description | Status |
 |---------|------------|---------|
-| Project Management | Create and manage projects | \checkmark Available |
-| Process Automation | Automate repetitive tasks | \checkmark Available |
+| Project Management | Create and manage projects | ✅ Available |
+| Process Automation | Automate repetitive tasks | ✅ Available |
 | Testing Framework | Comprehensive testing tools | 🚧 Beta 
 
 For a detailed overview of all features, see the [SoftwareProject overview](overview.md).
