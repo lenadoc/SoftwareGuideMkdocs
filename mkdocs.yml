@@ -46,9 +46,9 @@ nav:
       - Create a Process: usage/create-process.md
       - Test a Project: usage/test-project.md
 plugins:
-  - search
+  - search <!--  
   - pdf-export:
-      combined: true
+      combined: true --> # Remove the hidden comment symbols if you want to generate pdfs
 
 markdown_extensions:
   - tables

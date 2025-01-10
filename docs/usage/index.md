@@ -1,4 +1,4 @@
-# How to Use the Software
+# How to use the software
 
 This section provides detailed guides for using our software platform:
 
@@ -6,7 +6,7 @@ This section provides detailed guides for using our software platform:
 2. [Create a Process](create-process.md): Automate your workflows
 3. [Test the Project](test-project.md): Ensure quality and reliability
 
-## Getting Started
+## Getting started
 
 Review the following checklist before proceeding:
 
