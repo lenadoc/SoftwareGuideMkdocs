@@ -5,7 +5,7 @@ Welcome to the comprehensive documentation for our software platform. This guide
 !!! tip "Quick start"
     New to the platform? Start with our [Installation Guide](installation.md) and then follow our [Create a Project](usage/create-project.md) tutorial.
 
-## Key Features
+## Key features
 This is a sample description of features.
 
 ### Feature 1
