@@ -11,7 +11,7 @@ Follow these steps to create your first project:
     - Description
     - Team members
 
-!!! tip "Project Templates"
+!!! tip "Project templates"
     Use our pre-built templates to get started quickly. Access them from the "Templates" dropdown.
 
 See [Create a Process](create-process.md) for next steps.
