@@ -20,6 +20,8 @@ pandoc docs/usage/create-project.md -o create3.pdf --pdf-engine=xelatex --extrac
 pandoc docs/usage/create-project.md -o create4.pdf --extract-media=
 
 Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin. Installation:
+- pdf-export:
+      combined: true
 
 1. Install WeasyPrint:
     1. Install the latest executable from this page: https://github.com/Kozea/WeasyPrint/releases

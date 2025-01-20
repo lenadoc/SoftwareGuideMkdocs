@@ -47,8 +47,7 @@ nav:
       - Test a Project: usage/test-project.md
 plugins:
   - search 
-  <!-- - pdf-export:
-      combined: true --> # Remove the hidden comment symbols if you want to generate pdfs
+# To generate pdfs add pdf-export: plugin with combined: true option
 
 markdown_extensions:
   - tables
