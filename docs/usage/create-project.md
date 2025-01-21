@@ -9,7 +9,7 @@ Follow these steps to create your first project:
 3. Fill in project details:
     - Name
     - Description
-    - Team members
+    - Team members etc.
 
 !!! tip "Project Templates"
     Use our pre-built templates to get started quickly. Access them from the "Templates" dropdown.
