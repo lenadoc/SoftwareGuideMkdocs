@@ -19,7 +19,8 @@ pandoc docs/usage/create-project.md -o create3.pdf --pdf-engine=xelatex --extrac
 
 pandoc docs/usage/create-project.md -o create4.pdf --extract-media=
 
-Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin. Installation:
+Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin. Links in combined files are broken: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin/issues/43
+Installation:
 - pdf-export:
       combined: true
 
@@ -30,3 +31,9 @@ Plugins for PDF export: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin. 
         2. After installation, in MSYS2’s shell, execute `pacman -S mingw-w64-x86_64-pango`.
         3. Close MSYS2’s shell.
     3. Follow the installation procedure described [here](https://github.com/zhaoterryy/mkdocs-pdf-export-plugin?tab=readme-ov-file#installation).
+
+Variables: consider using Mkdocs-macros plugin: https://mkdocs-macros-plugin.readthedocs.io/en/latest/#:~:text=Getting%20started-,Definition,md%20extension).
+
+  - with-pdf plugin (code samples are not visisble): https://github.com/orzih/mkdocs-with-pdf 
+
+  - print-site plugin to create one web page and generate pdf from browser (pint - save as pdf) https://github.com/timvink/mkdocs-print-site-plugin
