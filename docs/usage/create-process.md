@@ -14,7 +14,7 @@ Our platform supports various process types:
 
 1. Open your [project](create-project.md)
 2. Select "New Process"
-3. Choose a process type
+3. Choose a process dfdfd type
 4. Configure steps
 
 !!! example "Example Process"

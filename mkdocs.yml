@@ -35,7 +35,8 @@ theme:
           note: >- 
             Thanks for your feedback! Help us improve this page by
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
-  
+use_directory_urls: false
+
 nav:
   - Home: index.md
   - Software Project Overview: overview.md
@@ -46,8 +47,10 @@ nav:
       - Create a Process: usage/create-process.md
       - Test a Project: usage/test-project.md
 plugins:
-  - search 
+  - search
+  - print-site
 # To generate pdfs add pdf-export: plugin with combined: true option
+# To create a combined web page of the whole website and generate a pdf from it from the browser (print - save as pdf), use the "print-site" plugin at the bottom of the plugin lists: https://github.com/timvink/mkdocs-print-site-plugin
 
 markdown_extensions:
   - tables
