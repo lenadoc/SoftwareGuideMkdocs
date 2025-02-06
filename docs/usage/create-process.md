@@ -12,7 +12,7 @@ Our platform supports various process types:
 
 ## Creating a Process
 
-1. Open your [project](create-project.md)
+1. Open your [project](crate-project.md)
 2. Select "New Process"
 3. Choose a process dfdfd type
 4. Configure steps
